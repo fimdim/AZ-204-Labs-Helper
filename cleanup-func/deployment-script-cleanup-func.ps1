@@ -25,5 +25,5 @@ New-AzResourceGroupDeployment -Name $deploymentName -Mode Complete -ResourceGrou
 
 # Create a new role assignment for the Function App (Contributor at the current subscription level)
 $subscriptionId=(Get-AzSubscription).Id
-$objectid = (Get-AzADServicePrincipal -DisplayName $functionAppName).id
+$objectId = (Get-AzADServicePrincipal -DisplayName $functionAppName).id
 New-AzRoleAssignment -ObjectId $objectId -RoleDefinitionName Contributor -Scope /subscriptions/$subscriptionId
