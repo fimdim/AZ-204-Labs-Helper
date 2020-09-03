@@ -1,7 +1,7 @@
 # AZ-204 Labs Helper - Lab 03
 
 ## Architecture
-![Architecture](lab03.png)
+![Architecture](desc-img/lab03.png)
 
 ## Deployment
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ffimdim%2FAZ-204-Labs-Helper%2Fmaster%2Flabs%2Flab03%2Ftemplate-lab03.json)
@@ -20,4 +20,4 @@ It has all the required steps implemented :
 
 ### Lab Excercises
 
-[](desc-img/lab03.png)
+![Exercises](desc-img/lab3-exercises.jpg)
