@@ -4,7 +4,7 @@
 ![Architecture](lab03.png)
 
 ## Deployment
-[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ffimdim%2FAZ-204-Labs-Templates%2Fmaster%2Flabs%2Flab03%2Ftemplate-lab03.json)
+[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ffimdim%2FAZ-204-Labs-Helper%2Fmaster%2Flabs%2Flab03%2Ftemplate-lab03.json)
 
 ### Requirements 
 In order to run the [BlobManager](BlobManager) console app, you need dotnet 3.1 .
