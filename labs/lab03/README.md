@@ -17,3 +17,7 @@ It has all the required steps implemented :
 * Upload [images](images) to the blob containers
 * Update parameters in [Program.cs](BlobManager/Program.cs)
 * Run the console app (optional)
+
+### Lab Excercises
+
+[](desc-img/lab03.png)
