@@ -1,0 +1,58 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "String",
+            "defaultValue": "mediastoraz204lab03"
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+                "type": "lab"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[parameters('storageAccountName')]",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('tags')]",
+            "sku": {
+                "name": "Standard_RAGRS"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "accessTier": "Hot"
+            },
+            "resources": [
+                {
+                    "type": "blobServices/containers",
+                    "apiVersion": "2019-06-01",
+                    "name": "default/compressed-audio",
+                    "dependsOn": [
+                        "[parameters('storageAccountName')]"
+                    ]
+                },
+                {
+                    "type": "blobServices/containers",
+                    "apiVersion": "2019-06-01",
+                    "name": "default/raster-graphics",
+                    "dependsOn": [
+                        "[parameters('storageAccountName')]"
+                    ]
+                },
+                {
+                    "type": "blobServices/containers",
+                    "apiVersion": "2019-06-01",
+                    "name": "default/vector-graphics",
+                    "dependsOn": [
+                        "[parameters('storageAccountName')]"
+                    ]
+                }
+            ]
+        }
+    ]
+}
