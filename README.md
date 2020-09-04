@@ -6,7 +6,7 @@ It aims to minimize the time to create the full labs.
 
 ## Use scenarios
 - A trainer wants to have the lab resources to be able to explain the lab or troubleshoot
-- A student wants skip the instructions and see the lab solution.
+- A student wants to skip the instructions and see the lab solution.
 
 ## How to use
 There are two ways to use deploy a lab environment:
