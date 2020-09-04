@@ -2,7 +2,7 @@
 $deploymentName="AZ204Lab03Deployment"
 $resourceGroupName="StorageMedia"
 $location="West Europe"
-$storageAccountNameSuffix=123456789
+$storageAccountNameSuffix=Get-Random -Maximum 100000000
 $storageAccountName="mediastor"+$storageAccountNameSuffix
 $tags=@{type="lab"}
 
