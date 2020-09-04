@@ -15,3 +15,7 @@ There are two ways to use deploy a lab environment:
 
 ## Quick access to the labs
 * [Lab 03](labs/lab03)
+
+
+## Clean up Function app
+The [Clean up Function app](cleanup-func) helps remove provisioned services previously.
