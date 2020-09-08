@@ -1,0 +1,78 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "List_files": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azurefile']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/datasets/default/foldersV2/@{encodeURIComponent(encodeURIComponent('/metadata'))}",
+                    "queries": {
+                        "nextPageMarker": "",
+                        "useFlatListing": false
+                    }
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('Select')",
+                    "statusCode": 200
+                },
+                "kind": "http",
+                "runAfter": {
+                    "Select": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            },
+            "Select": {
+                "inputs": {
+                    "from": "@body('List_files')?['value']",
+                    "select": "@item()?['Name']"
+                },
+                "runAfter": {
+                    "List_files": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Select"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "GET",
+                    "schema": {}
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azurefile": {
+                    "connectionId": "/subscriptions/e788effb-3869-4694-a8f6-a5f17e417bc3/resourceGroups/module9/providers/Microsoft.Web/connections/azurefile",
+                    "connectionName": "azurefile",
+                    "id": "/subscriptions/e788effb-3869-4694-a8f6-a5f17e417bc3/providers/Microsoft.Web/locations/westeurope/managedApis/azurefile"
+                }
+            }
+        }
+    }
+}
