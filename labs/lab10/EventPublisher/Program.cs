@@ -6,9 +6,9 @@ using Microsoft.Azure.EventGrid.Models;
 
 public class Program
 {
-private const string topicEndpoint = "https://hrtopic20069.westeurope-1.eventgrid.azure.net/api/events";
+private const string topicEndpoint = "";
 
-private const string topicKey = "EF83XIO0WyQ4C45gizAjeY37h0bxTQgFs0WWSCbDA4I=";
+private const string topicKey = "";
 
     public static async Task Main(string[] args)
     {
