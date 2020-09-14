@@ -37,15 +37,15 @@ endpoint=$(az eventgrid topic show -n $eventGridTopicName -g $resourceGroupName 
 key=$(az eventgrid topic key list -n $eventGridTopicName -g $resourceGroupName --query key1 -o tsv)
 
 echo Update Topic-Endpoint in EventPublisher program
-search="<Topic-Endpoint>"
-replace=$(echo $endpoint | sed 's/\//\\\//g')
-sed -i "s/${search}/${replace}/g" EventPublisher/Program.cs
+search="private const string topicEndpoint"
+replace=$(echo "private const string topicEndpoint = \""$endpoint"\";" | sed 's/\//\\\//g')
+sed -i "/${search}/c${replace}" EventPublisher/Program.cs
 
 echo Update Topic-Key in EventPublisher program
-search="<Topic-Key>"
-replace=$(echo $key | sed 's/\//\\\//g')
-sed -i "s/${search}/${replace}/g" EventPublisher/Program.cs
+search="private const string topicKey"
+replace=$(echo "private const string topicKey = \""$key"\";" | sed 's/\//\\\//g')
+sed -i "/${search}/c${replace}" EventPublisher/Program.cs
 
 # echo If dotnet 3.1 is installed
-#cd EventPublisher
-#dotnet run
+# cd EventPublisher
+# dotnet run
