@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Azure.EventGrid;
@@ -6,9 +6,9 @@ using Microsoft.Azure.EventGrid.Models;
 
 public class Program
 {
-    private const string topicEndpoint = "<Topic-Endpoint>";
+private const string topicEndpoint = "https://hrtopic20069.westeurope-1.eventgrid.azure.net/api/events";
 
-    private const string topicKey = "<Topic-Key>";
+private const string topicKey = "EF83XIO0WyQ4C45gizAjeY37h0bxTQgFs0WWSCbDA4I=";
 
     public static async Task Main(string[] args)
     {
