@@ -18,4 +18,4 @@ One single manual step is required in the Azure portal - after the script finish
 
 ### Lab Excercises
 
-![Exercises](files/az204-lab09.jpeg)
+![Exercises](files/az204-lab09.jpg)
