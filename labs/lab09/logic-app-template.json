@@ -1,0 +1,115 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "connections_azurefile_externalid": {
+            "defaultValue": "[concat(subscription().id, '/resourceGroups/AutomatedWorkflow/providers/Microsoft.Web/connections/azurefile')]",
+            "type": "String"
+        },
+        "Location": {
+            "defaultValue": "westeurope",
+            "type": "String"
+        },
+        "LogicAppName": {
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('LogicAppName')]",
+            "location": "West Europe",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        },
+                        "order": {
+                            "defaultValue": {
+                                "companyName": "NAME=Contoso",
+                                "id": "myorder1",
+                                "quantity": 10
+                            },
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "request": {
+                            "type": "Request",
+                            "kind": "Http",
+                            "inputs": {
+                                "method": "GET"
+                            }
+                        }
+                    },
+                    "actions": {
+                        "List_files": {
+                            "runAfter": {},
+                            "metadata": {
+                                "JTJmbWV0YWRhdGE=": "/metadata"
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azurefile']['connectionId']"
+                                    }
+                                },
+                                "method": "get",
+                                "path": "/datasets/default/foldersV2/@{encodeURIComponent(encodeURIComponent('JTJmbWV0YWRhdGE='))}",
+                                "queries": {
+                                    "nextPageMarker": "",
+                                    "useFlatListing": false
+                                }
+                            }
+                        },
+                        "Response": {
+                            "runAfter": {
+                                "Select": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                                "body": "@body('Select')",
+                                "statusCode": 200
+                            }
+                        },
+                        "Select": {
+                            "runAfter": {
+                                "List_files": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Select",
+                            "inputs": {
+                                "from": "@body('List_files')?['value']",
+                                "select": "@item()?['Name']"
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azurefile": {
+                                "connectionId": "[parameters('connections_azurefile_externalid')]",
+                                "connectionName": "azurefile",
+                                "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('Location'),'/managedApis/azurefile')]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
