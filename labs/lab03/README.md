@@ -1,7 +1,11 @@
 # AZ-204 Labs Helper - Lab 03
 
 ## Architecture
-![Architecture](desc-img/lab03.png)
+### Workflow
+![Architecture](/images/labs/gif/lab03.gif)
+
+### Excercises
+![Exercises](/images/labs/jpg/lab03.jpg)
 
 ## Deployment
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ffimdim%2FAZ-204-Labs-Helper%2Fmaster%2Flabs%2Flab03%2Ftemplate-lab03.json)
@@ -17,7 +21,3 @@ It has all the required steps implemented :
 * Upload [images](images) to the blob containers
 * Update parameters in [Program.cs](BlobManager/Program.cs)
 * Run the console app (optional)
-
-### Lab Excercises
-
-![Exercises](desc-img/lab3-exercises.jpg)
