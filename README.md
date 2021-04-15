@@ -25,7 +25,6 @@ There are two ways to use deploy a lab environment:
 * [Lab 10](labs/lab10)
 * [Lab 11](labs/lab11)
 * [Lab 12](labs/lab12)
-* [Lab 13](labs/lab13)
 
 
 ## Clean up Function app
